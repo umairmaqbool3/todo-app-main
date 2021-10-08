@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Todo app</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+  <script async src="myscript.js"></script>
+  <style>
+    .attribution { font-size: 11px; text-align: center;color: var(--attribution-color) }
+    .attribution a { color: var(--attribution-color);opacity:var(--attribution-opacity);letter-spacing: 2px; }
+    .ui-state-highlight { height: 2.5em; line-height: 2.2em; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div  class="inner_box">
+  <header class="header">
+    <h1>TODO</h1>
+    <button class="theme_change_btn" id="dark-mode-toggle">
+      <img src="images/icon-sun.svg" class="icon-sun" alt="button_for_changing_theme"/>
+    </button>
+  </header>
+
+  <main>
+    <div class="input_class">
+      <div class="checkbox"></div>
+        <input type="text" placeholder="Create a new todo..." id="input_field" name="create_todo" class="input-field" required autocomplete="off">
+        <input type="button" id="addbtn" style="display: none;" onclick="addTask()">
+    </div>
+
+    <ul class="task_list sortable">
+      <!-- Todo Task will be added here using javascript -->
+    </ul>
+    <footer>
+      <div class="footer">
+        <p class="items_left pendingTasks"></p> 
+        <div class="status">
+          <p class="status_btn active" id="status_all" onclick="filter_status('all')">All</p>
+          <p class="status_btn" id="status_active" onclick="filter_status('active')" >Active</p>
+          <p class="status_btn" id="status_completed" onclick="filter_status('completed')">Completed</p>
+        </div>
+        <div class="clear_completed">
+          <span onclick="Clear_completed_tasks()">Clear Completed</span>
+        </div>
+        
+      </div>
+    </footer>
+  </main>
+</div> 
+<p class="last_text">Drag and drop to reorder list</p>
+</div>
+
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://umairmaqbool3.github.io/" target="_blank">Umair Maqbool</a>.
+  </div>
+  <script>
+    // $( function() {
+    //   $( ".sortable" ).sortable();
+    // } );
+    $( function() {
+    $( ".sortable" ).sortable({
+      placeholder: "ui-state-highlight"
+    });
+    $( ".sortable" ).disableSelection();
+  } );
+    </script>
+
+</body>
+</html>
